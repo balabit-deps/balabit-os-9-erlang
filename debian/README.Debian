@@ -1,0 +1,86 @@
+Open Source Erlang for DEBIAN
+-----------------------------
+
+This project (Erlang for Debian) is hosted on Salsa:
+
+https://salsa.debian.org/erlang-team/packages/erlang (the project page)
+https://salsa.debian.org/erlang-team/packages/erlang.git (the Git repository)
+mailto:pkg-erlang-devel@alioth-lists.debian.net (theh mailing list)
+
+----------------
+
+Note, that if you want to get Erlang documentation, you'll have to
+install erlang-manpages (for manual pages) and/or erlang-doc
+(for docs in HTML and PDF).
+
+----------------
+
+Starting from version 1:22.0.7+dfsg-2 erlang-wx is built using wxWidgets GTK 3
+implementation. This means that it uses Wayland backend if available. And since
+wxGLCanvas still doesn't support Wayland, any application that uses wxGLCanvas
+module has to be executed with x11 backend (see
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=900678 and
+https://trac.wxwidgets.org/ticket/17702 for additional information).
+To do that, one can use the GDK_BACKEND environment variable, for example
+
+GDK_BACKEND=x11 wings3d
+
+----------------
+
+Starting from version 1:21.2.2+dfsg-1 the erlang-base
+package provides systemd socket and unit files for the epmd daemon, which
+are enabled by default. This causes the executed epmd to be owned by a separate
+user which is more secure in multi-user environment. (By default, the first
+distributed Erlang application starts the epmd daemon, and then it can kill
+it disrupting the other epmd clients.)
+
+To start/stop epmd execute
+
+systemctl start epmd.socket
+systemctl stop epmd.socket
+
+respectively. Notice, that they bind to all the network interfaces,
+so if you want to restrict the Erlang distribution for localhost only, you'd have
+to edit the socket unit file. Execute
+
+systemctl edit epmd.socket
+
+and then put the following lines into the opened editor:
+
+[Socket]
+BindToDevice=lo
+
+Then reload the systemd daemon:
+
+systemctl daemon-reload
+
+and start epmd.socket. After that epmd will listen on loopback only.
+
+Alternatively, you could add the following directives to the epmd.socket:
+
+systemctl edit epmd.socket
+
+And then add:
+
+[Socket]
+IPAddressDeny=any
+IPAddressAllow=localhost
+
+(An option takes a list of networks for its value.
+See systemd.resource-control(5) for details.)
+
+And of course, you could use a firewall to block unwanted connections to epmd.
+
+If you never plan to use distributed Erlang, you can disable or even mask the
+epmd units, e.g.
+
+systemctl disable epmd.socket
+
+or
+
+systemctl mask epmd.socket
+
+In the former case another service like ejabberd might enable the socket by
+dependency.
+
+ -- Sergei Golovan <sgolovan@debian.org>  Fri, 28 Dec 2018 15:46:09 +0300
