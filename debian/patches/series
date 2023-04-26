@@ -8,3 +8,5 @@ java.patch
 javascript.patch
 x32.patch
 atomsfontlock.patch
+CVE-2022-37026-1.patch
+CVE-2022-37026-2.patch
