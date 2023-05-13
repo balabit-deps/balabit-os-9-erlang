@@ -1,3 +1,9 @@
+erlang (1:24.2.1+dfsg-1ubuntu0.1bb1) jammy; urgency=medium
+
+  * Balabit patched version
+
+ -- Balabit Platform Team <devnull@dev.null>  Sat, 13 May 2023 04:21:57 +0200
+
 erlang (1:24.2.1+dfsg-1ubuntu0.1) jammy-security; urgency=medium
 
   * SECURITY UPDATE: SSL, TLS and DTLS client authentication bypass
