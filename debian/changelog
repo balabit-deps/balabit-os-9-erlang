@@ -1,3 +1,14 @@
+erlang (1:24.2.1+dfsg-1ubuntu0.1) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: SSL, TLS and DTLS client authentication bypass
+    - d/p/CVE-2022-37026-1.patch: fix handling of unexpected
+      messages. Based on upstream patch.
+    - d/p/CVE-2022-37026-2.patch: correct guard check. Based on upstream
+      patch.
+    - CVE-2022-37026  
+
+ -- Alex Murray <alex.murray@canonical.com>  Wed, 26 Apr 2023 10:44:55 +0200
+
 erlang (1:24.2.1+dfsg-1bb1) jammy; urgency=medium
 
   * Balabit patched version
