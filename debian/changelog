@@ -1,3 +1,12 @@
+erlang (1:24.2.1+dfsg-1ubuntu0.2) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: incorrect SSH packet size check
+    - debian/patches/CVE-2025-26618.patch: sftp reject packets exceeding
+      limit in lib/ssh/src/ssh_sftpd.erl.
+    - CVE-2025-26618
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Thu, 27 Feb 2025 10:52:11 -0500
+
 erlang (1:24.2.1+dfsg-1ubuntu0.1) jammy-security; urgency=medium
 
   * SECURITY UPDATE: SSL, TLS and DTLS client authentication bypass
