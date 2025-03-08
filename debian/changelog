@@ -1,3 +1,9 @@
+erlang (1:24.2.1+dfsg-1ubuntu0.2bb1) jammy; urgency=medium
+
+  * Balabit patched version
+
+ -- Balabit Platform Team <devnull@dev.null>  Sat, 08 Mar 2025 03:24:24 +0000
+
 erlang (1:24.2.1+dfsg-1ubuntu0.2) jammy-security; urgency=medium
 
   * SECURITY UPDATE: incorrect SSH packet size check
