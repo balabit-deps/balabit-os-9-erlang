@@ -1,3 +1,9 @@
+erlang (1:24.2.1+dfsg-1ubuntu0.3bb1) jammy; urgency=medium
+
+  * Balabit patched version
+
+ -- Balabit Platform Team <devnull@dev.null>  Sat, 12 Apr 2025 02:22:53 +0000
+
 erlang (1:24.2.1+dfsg-1ubuntu0.3) jammy-security; urgency=medium
 
   * SECURITY UPDATE: denial of service
