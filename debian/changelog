@@ -1,3 +1,14 @@
+erlang (1:24.2.1+dfsg-1ubuntu0.4) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: Unauthenticated Remote Code Execution in SSH
+    - debian/patches/CVE-2025-32433.patch: disconnect when connection
+      protocol message arrives when user is not authenticated for
+      connection in lib/ssh/src/ssh_connection.erl,
+      lib/ssh/test/ssh_protocol_SUITE.erl.
+    - CVE-2025-32433
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Wed, 16 Apr 2025 14:23:11 -0400
+
 erlang (1:24.2.1+dfsg-1ubuntu0.3) jammy-security; urgency=medium
 
   * SECURITY UPDATE: denial of service
