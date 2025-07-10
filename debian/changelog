@@ -1,3 +1,28 @@
+erlang (1:24.2.1+dfsg-1ubuntu0.5) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: insufficient strict KEX handshake hardening measures
+    - debian/patches/CVE-2025-46712-pre1.patch: postpone
+      ssh_connection_handler init in
+      lib/ssh/src/ssh_connection_handler.erl.
+    - debian/patches/CVE-2025-46712-pre2.patch: implement KEX strict in
+      lib/ssh/src/ssh.hrl, lib/ssh/src/ssh_connection_handler.erl,
+      lib/ssh/src/ssh_fsm_kexinit.erl, lib/ssh/src/ssh_transport.erl,
+      lib/ssh/src/ssh_transport.hrl, lib/ssh/test/ssh_protocol_SUITE.erl,
+      lib/ssh/test/ssh_test_lib.erl, lib/ssh/test/ssh_to_openssh_SUITE.erl,
+      lib/ssh/test/ssh_trpt_test_lib.erl.
+    - debian/patches/CVE-2025-46712-1.patch: add KEX strict implementation
+      fixes in lib/ssh/src/ssh_connection_handler.erl,
+      lib/ssh/src/ssh_fsm_kexinit.erl, lib/ssh/src/ssh_transport.erl,
+      lib/ssh/test/ssh_protocol_SUITE.erl,
+      lib/ssh/test/ssh_trpt_test_lib.erl.
+    - CVE-2025-46712
+  * SECURITY UPDATE: path traversal and other issues in zip
+    - debian/patches/CVE-2025-4748.patch: properly sanitize filenames when
+      (un)zipping in lib/stdlib/src/zip.erl, lib/stdlib/test/zip_SUITE.erl.
+    - CVE-2025-4748
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Thu, 10 Jul 2025 12:45:03 -0400
+
 erlang (1:24.2.1+dfsg-1ubuntu0.4) jammy-security; urgency=medium
 
   * SECURITY UPDATE: Unauthenticated Remote Code Execution in SSH
