@@ -1,3 +1,9 @@
+erlang (1:24.2.1+dfsg-1ubuntu0.6bb1) jammy; urgency=medium
+
+  * Balabit patched version
+
+ -- Balabit Platform Team <devnull@dev.null>  Sat, 25 Oct 2025 08:22:22 +0000
+
 erlang (1:24.2.1+dfsg-1ubuntu0.6) jammy-security; urgency=medium
 
   * SECURITY UPDATE: Increased resource consumption in the SSH module.
