@@ -1,3 +1,27 @@
+erlang (1:24.2.1+dfsg-1ubuntu0.6) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: Increased resource consumption in the SSH module.
+    - debian/patches/CVE-2025-48038.patch: Add handle_op for file handle length
+      string exceeding 256 bytes in lib/ssh/src/ssh_sftpd.erl.
+    - debian/patches/CVE-2025-48039.patch: Add max_path option and limits in
+      lib/ssh/src/ssh_sftpd.erl.i
+    - debian/patches/CVE-2025-48040-pre1.patch: Fix error by adding try catch
+      in lib/ssh/src/ssh_transport.erl.
+    - debian/patches/CVE-2025-48040.patch: Add max_log_len in
+      lib/ssh/src/ssh_connection.erl. Add Class:Reason0:Stacktrace for decode
+      failures in lib/ssh/src/ssh_connection_handler.erl. Add trim_reason and
+      max_log_len in lib/ssh/src/ssh_lib.erl. Change decode_kex_init in
+      lib/ssh/src/ssh_message.erl. Change kexinit_error and modify Msg in
+      lib/ssh/src/ssh_transport.erl.
+    - debian/patches/CVE-2025-48041.patch: Add max_handles option and limits in
+      lib/ssh/src/ssh_sftpd.erl.
+    - CVE-2025-48038
+    - CVE-2025-48039
+    - CVE-2025-48040
+    - CVE-2025-48041
+
+ -- Hlib Korzhynskyy <hlib.korzhynskyy@canonical.com>  Fri, 17 Oct 2025 15:17:48 -0230
+
 erlang (1:24.2.1+dfsg-1ubuntu0.5bb1) jammy; urgency=medium
 
   * Balabit patched version
