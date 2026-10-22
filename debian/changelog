@@ -1,3 +1,274 @@
+erlang (1:24.2.1+dfsg-1ubuntu0.8) jammy-security; urgency=medium
+
+  * debian/patches/CVE-2022-37026-1.patch: call
+    ssl_gen_statem:handle_own_alert/3, the only arity that exists in this
+    version, instead of a non-existent handle_own_alert/4, so unexpected
+    application data and certificate verify errors raise a TLS/DTLS alert
+    instead of crashing the connection process with undef, in
+    lib/ssl/src/dtls_connection.erl, lib/ssl/src/tls_connection.erl,
+    lib/ssl/src/tls_gen_connection.erl.
+  * SECURITY UPDATE: Path Traversal
+    - debian/patches/CVE-2026-21620-1.patch: Validate initial options in
+      lib/tftp/src/tftp_file.erl.
+    - debian/patches/CVE-2026-21620-2.patch: Rewrite old style catch in
+      lib/tftp/src/tftp_file.erl.
+    - debian/patches/CVE-2026-21620-3.patch: Fix typos in
+      lib/tftp/src/tftp_file.erl.
+    - debian/patches/CVE-2026-21620-4.patch: Fix an incorrect type and a few
+      bugs in lib/tftp/src/tftp_file.erl.
+    - CVE-2026-21620
+  * SECURITY UPDATE: Path Traversal
+    - debian/patches/CVE-2026-23942.patch: ssh: Fix path traversal vulnerability
+      in ssh_sftpd root directory validation in lib/ssh/src/ssh_sftpd.erl.
+    - CVE-2026-23942
+  * SECURITY UPDATE: Denial of Service
+    - debian/patches/CVE-2026-23943.patch: Disable zlib by default and limit
+      size of decompressed data in lib/ssh/src/ssh_connection_handler.erl,
+      lib/ssh/src/ssh_transport.erl.
+    - CVE-2026-23943
+  * SECURITY UPDATE: Authentication Bypass
+    - debian/patches/CVE-2026-28808.patch: inets: Check script_alias when using
+      mod_auth in lib/inets/src/http_server/mod_alias.erl.
+    - CVE-2026-28808
+  * SECURITY UPDATE: DNS Cache Poisoning
+    - debian/patches/CVE-2026-28810-pre1.patch: Use case insensitive domain
+      compare in lib/kernel/src/inet_db.erl.
+    - debian/patches/CVE-2026-28810-pre2.patch: Make domain name comparison
+      ignore trailing dot in lib/kernel/src/inet_db.erl.
+    - debian/patches/CVE-2026-28810-1.patch: Randomize `inet_res` transaction ID
+      and source port number in lib/kernel/doc/src/inet_res.xml,
+      lib/kernel/src/gen_udp.erl, lib/kernel/src/inet.erl,
+      lib/kernel/src/inet6_udp.erl, lib/kernel/src/inet_db.erl,
+      lib/kernel/src/inet_dns.erl, lib/kernel/src/inet_res.erl,
+      lib/kernel/src/inet_udp.erl, lib/kernel/test/inet_res_SUITE.erl.
+    - debian/patches/CVE-2026-28810-2.patch: Update after feedback in
+      lib/kernel/src/gen_udp.erl, lib/kernel/src/inet.erl,
+      lib/kernel/src/inet6_sctp.erl, lib/kernel/src/inet_db.erl,
+      lib/kernel/src/inet_dns.erl, lib/kernel/src/inet_res.erl,
+      lib/kernel/src/inet_sctp.erl.
+    - debian/patches/CVE-2026-28810-3.patch: Fix handling of truncation bit vs.
+      truncated sections in lib/kernel/src/inet_dns.erl,
+      lib/kernel/src/inet_res.erl, lib/kernel/test/inet_res_SUITE.erl.
+    - debian/patches/CVE-2026-28810-4.patch: Do not drop random mode after
+      getting econnrefused in lib/kernel/src/inet_res.erl.
+    - CVE-2026-28810
+  * SECURITY UPDATE: Path Traversal
+    - debian/patches/CVE-2026-32147.patch: Fix root escape vulnerability in
+      SSH_FXP_FSETSTAT in lib/ssh/src/ssh_sftpd.erl.
+    - CVE-2026-32147
+  * SECURITY UPDATE: Certificate Validation Bypass
+    - debian/patches/CVE-2026-42789.patch: public_key: Update to stricter check
+      as clearly defined in RFC 5280 in lib/public_key/src/pubkey_cert.erl.
+    - CVE-2026-42789
+  * SECURITY UPDATE: Certificate Validation Bypass
+    - debian/patches/CVE-2026-42790-1.patch: public_key: Adhere to RFC 9525 in
+      lib/public_key/src/public_key.erl.
+    - debian/patches/CVE-2026-42790-2.patch: public_key: Add new error in
+      lib/public_key/doc/src/public_key.xml, lib/public_key/src/pubkey_cert.erl,
+      lib/public_key/test/pkits_SUITE.erl.
+    - debian/patches/CVE-2026-42790-3.patch: ssl: Improve error handling due to
+      public_key updates. in lib/ssl/src/ssl_handshake.erl.
+    - CVE-2026-42790
+  * SECURITY UPDATE: Information Disclosure
+    - debian/patches/CVE-2026-48855.patch: Fix absolute path leak from
+      SSH_FXP_READLINK in lib/ssh/src/ssh_sftpd.erl.
+    - CVE-2026-48855
+  * SECURITY UPDATE: Information Disclosure
+    - debian/patches/CVE-2026-48856.patch: inets/httpc: strip sensitive headers
+      on cross-origin redirect in lib/inets/src/http_client/httpc_response.erl.
+    - CVE-2026-48856
+  * SECURITY UPDATE: Server-Side Request Forgery
+    - debian/patches/CVE-2026-48858.patch: ftp: validate PASV response IP
+      against control connection peer in lib/ftp/src/ftp.erl.
+    - CVE-2026-48858
+  * SECURITY UPDATE: Denial of Service
+    - debian/patches/CVE-2026-49759-1.patch: Protect the output term buffer from
+      overflow in erts/emulator/drivers/common/inet_drv.c.
+    - debian/patches/CVE-2026-49759-2.patch: Rewrite error parse loop to handle
+      all lengths in erts/emulator/drivers/common/inet_drv.c.
+    - CVE-2026-49759
+  * SECURITY UPDATE: Buffer Overflow
+    - debian/patches/CVE-2026-49760.patch: erl_interface: Fix stack overflow in
+      ei_s_print_term in lib/erl_interface/src/misc/ei_printterm.c,
+      lib/erl_interface/test/ei_print_SUITE_data/ei_print_test.c.
+    - CVE-2026-49760
+  * SECURITY UPDATE: Information Disclosure
+    - debian/patches/CVE-2026-53422.patch: Fix realpath path existence oracle in
+      lib/ssh/src/ssh_sftpd.erl.
+    - CVE-2026-53422
+  * SECURITY UPDATE: Denial of Service
+    - debian/patches/CVE-2026-54886.patch: Fix extended data infinite loop in
+      sftpd in lib/ssh/src/ssh_sftpd.erl, lib/ssh/test/ssh_sftpd_SUITE.erl.
+    - CVE-2026-54886
+  * SECURITY UPDATE: Security Bypass
+    - debian/patches/CVE-2026-54887.patch: ssl: Avoid cookie forgery during
+      setup up window in lib/ssl/src/dtls_connection.erl.
+    - CVE-2026-54887
+  * SECURITY UPDATE: Plaintext Injection
+    - debian/patches/CVE-2026-54891.patch: ssl: TLS Client hardening in
+      lib/ssl/src/tls_gen_connection.erl.
+    - CVE-2026-54891
+  * SECURITY UPDATE: Denial of Service
+    - debian/patches/CVE-2026-55952.patch: ssl: Add PSK parameter check in
+      lib/ssl/src/tls_handshake_1_3.erl.
+    - CVE-2026-55952
+  * SECURITY UPDATE: Path Traversal
+    - debian/patches/CVE-2026-47078.patch: zip: Fix relative path traversal
+      checking in lib/stdlib/src/zip.erl.
+    - CVE-2026-47078
+  * SECURITY UPDATE: Authentication Bypass
+    - debian/patches/CVE-2026-74994.patch: inets: Fix per-directory auth
+      namespace isolation for dets/mnesia in
+      lib/inets/src/http_server/mod_auth.erl,
+      lib/inets/src/http_server/mod_auth_server.erl.
+    - CVE-2026-74994
+  * SECURITY UPDATE: Denial of Service
+    - debian/patches/CVE-2026-65634.patch: asn1: Mitigate a DoS vector in
+      lib/asn1/src/asn1rtt_ber.erl, lib/asn1/src/asn1rtt_jer.erl,
+      lib/asn1/src/asn1rtt_per_common.erl, lib/asn1/test/testPrim.erl.
+    - CVE-2026-65634
+  * SECURITY UPDATE: Denial of Service
+    - debian/patches/CVE-2026-68956-1.patch: ssh: Limit size of channel cache
+      entries in lib/ssh/src/ssh_channel_sup.erl,
+      lib/ssh/src/ssh_client_channel.erl, lib/ssh/src/ssh_connection.erl,
+      lib/ssh/src/ssh_connection_handler.erl, lib/ssh/src/ssh_subsystem_sup.erl,
+      lib/ssh/src/ssh_tcpip_forward_acceptor.erl.
+    - debian/patches/CVE-2026-68956-2.patch: ssh: Change max_sessions and
+      max_channels defaults and update terminology in lib/ssh/src/ssh.hrl,
+      lib/ssh/src/ssh_options.erl, lib/ssh/test/ssh_options_SUITE.erl.
+    - debian/patches/CVE-2026-68956-3.patch: ssh: Don't close connection when
+      port forward channel limit is reached in lib/ssh/src/ssh_connection.erl,
+      lib/ssh/src/ssh_connection_handler.erl.
+    - CVE-2026-68956
+  * SECURITY UPDATE: Server Impersonation
+    - debian/patches/CVE-2026-89422.patch: ssl: Reject unsolicited TLS-1.3
+      pre_shared_key in client in lib/ssl/src/tls_handshake_1_3.erl.
+    - CVE-2026-89422
+
+ -- John Breton <john.breton@canonical.com>  Wed, 07 Oct 2026 06:37:16 -0400
+
+erlang (1:24.2.1+dfsg-1ubuntu0.7) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: denial of service in the Erlang Port Mapper Daemon
+    - debian/patches/CVE-2026-42792.patch: epmd: Improve slow-connection
+      handling in erts/epmd/src/epmd_srv.c.
+    - CVE-2026-42792
+  * SECURITY UPDATE: buffer overflow via crafted packet length
+    - debian/patches/CVE-2026-75538.patch: Avoid signed int overflows in
+      erts/emulator/beam/packet_parser.c,
+      erts/emulator/drivers/common/inet_drv.c.
+    - CVE-2026-75538
+  * SECURITY UPDATE: buffer overflow in the megaco flex scanner
+    - debian/patches/CVE-2026-59250.patch: megaco: fix sprintf buffer overflow
+      in flex scanner in lib/megaco/src/flex/megaco_flex_scanner_drv.flex.src.
+    - CVE-2026-59250
+  * SECURITY UPDATE: TLS clients accepted cipher suites they did not offer
+    - debian/patches/CVE-2026-55953.patch: ssl: Add pre TLS-1.3 client cipher
+      suite check in lib/ssl/src/ssl_handshake.erl.
+    - CVE-2026-55953
+  * SECURITY UPDATE: denial of service via crafted certificate chains
+    - debian/patches/CVE-2026-58227.patch: ssl: Use digraph to ensure robust
+      cert chain building. in lib/ssl/src/ssl_certificate.erl,
+      lib/ssl/test/ssl_cert_SUITE.erl.
+    - CVE-2026-58227
+  * SECURITY UPDATE: HTTP request smuggling via conflicting framing headers
+    - debian/patches/CVE-2026-73812-pre1.patch: Prevent httpd from parsing HTTP
+      requests when multiple Content-Length headers are present in
+      lib/inets/src/http_server/httpd_request.erl,
+      lib/inets/src/http_server/httpd_request_handler.erl,
+      lib/inets/test/httpd_SUITE.erl.
+    - debian/patches/CVE-2026-73812.patch: inets: Reject requests with both
+      Transfer-Encoding and Content-Length in
+      lib/inets/src/http_server/httpd_internal.hrl,
+      lib/inets/src/http_server/httpd_request.erl,
+      lib/inets/test/http_test_lib.erl, lib/inets/test/httpc_SUITE.erl.
+    - CVE-2026-23941
+    - CVE-2026-73812
+  * SECURITY UPDATE: denial of service via malformed chunk sizes
+    - debian/patches/CVE-2026-69664.patch: inets: Fix rejection of invalid chunk
+      sizes in lib/inets/src/http_server/httpd_request_handler.erl,
+      lib/inets/test/httpd_SUITE.erl.
+    - CVE-2026-69664
+  * SECURITY UPDATE: denial of service via unbounded chunked request bodies
+    - debian/patches/CVE-2026-74835.patch: inets: Fix max_body_size to apply to
+      chunks as we receive them in lib/inets/src/http_lib/http_chunk.erl,
+      lib/inets/src/http_server/httpd_request_handler.erl,
+      lib/inets/test/http_format_SUITE.erl.
+    - CVE-2026-74835
+  * SECURITY UPDATE: authentication bypass via path equivalence / authentication bypass via inconsistent case handling
+    - debian/patches/CVE-2026-66835_73270.patch: inets: Canonicalize request
+      path before mod_auth directory check in
+      lib/inets/src/http_server/httpd_request.erl,
+      lib/inets/src/http_server/httpd_util.erl,
+      lib/inets/src/http_server/mod_alias.erl,
+      lib/inets/src/http_server/mod_auth.erl.
+    - CVE-2026-66835
+    - CVE-2026-73270
+  * SECURITY UPDATE: denial of service via unlimited simultaneous connections
+    - debian/patches/CVE-2026-70399.patch: inets: Fix default max_clients in
+      lib/inets/src/http_lib/http_internal.hrl,
+      lib/inets/src/http_server/httpd_manager.erl.
+    - CVE-2026-70399
+  * SECURITY UPDATE: HTTP request smuggling via header continuation lines
+    - debian/patches/CVE-2026-66357.patch: inets: Reject obs-fold header
+      continuation in httpd (RFC 9112) in
+      lib/inets/src/http_server/httpd_request.erl,
+      lib/inets/test/httpd_SUITE.erl.
+    - CVE-2026-66357
+  * SECURITY UPDATE: HTTP request smuggling via malformed header names
+    - debian/patches/CVE-2026-73276.patch: inets: Reject headers with whitespace
+      before colon in httpd in lib/inets/src/http_lib/http_request.erl,
+      lib/inets/src/http_server/httpd_request.erl,
+      lib/inets/test/httpd_SUITE.erl.
+    - debian/patches/CVE-2026-73276-2.patch: httpd: add error handling for
+      headers with whitespace before colon in
+      lib/inets/src/http_lib/http_request.erl,
+      lib/inets/src/http_server/httpd_internal.hrl,
+      lib/inets/src/http_server/httpd_request.erl.
+    - CVE-2026-73276
+  * SECURITY UPDATE: authentication bypass via inconsistent case handling
+    - debian/patches/CVE-2026-73270-2.patch: inets: Add caseless matching to
+      mod_security directory lookup in lib/inets/src/http_server/httpd_util.erl,
+      lib/inets/src/http_server/mod_security.erl.
+    - CVE-2026-73270
+  * SECURITY UPDATE: denial of service via incomplete request bodies
+    - debian/patches/CVE-2026-71380-pre1.patch: inets: Adjust keep_alive_timeout
+      effective measurement in httpd in
+      lib/inets/src/http_server/httpd_conf.erl,
+      lib/inets/src/http_server/httpd_request_handler.erl.
+    - debian/patches/CVE-2026-71380-pre2.patch: inets: Add httpd option
+      max_body_read_timeout in lib/inets/src/http_lib/http_internal.hrl,
+      lib/inets/src/http_server/httpd_conf.erl,
+      lib/inets/src/http_server/httpd_request_handler.erl.
+    - debian/patches/CVE-2026-71380-pre3.patch: inets: Send 408 when we hit
+      min_bytes_per_second floor in
+      lib/inets/src/http_server/httpd_request_handler.erl.
+    - debian/patches/CVE-2026-71380.patch: inets: rename max_body_read_timeout
+      option to request_timeout in lib/inets/src/http_lib/http_internal.hrl,
+      lib/inets/src/http_server/httpd_conf.erl,
+      lib/inets/src/http_server/httpd_request_handler.erl.
+    - debian/patches/CVE-2026-71380-2.patch: Fix dialyzer errors in
+      httpd_request_handler in
+      lib/inets/src/http_server/httpd_request_handler.erl.
+    - CVE-2026-71380
+  * SECURITY UPDATE: denial of service via unbounded HTTP response headers
+    - debian/patches/CVE-2026-55951-pre1.patch: OTP-19158 httpc enable options
+      for async request in lib/inets/src/http_client/httpc.erl,
+      lib/inets/src/http_client/httpc_handler.erl,
+      lib/inets/src/http_client/httpc_internal.hrl,
+      lib/inets/src/http_client/httpc_request.erl,
+      lib/inets/test/httpc_SUITE.erl.
+    - debian/patches/CVE-2026-55951.patch: inets,stdlib,eldap: Bound integer
+      parsing to mitigate DoS in lib/eldap/src/eldap.erl,
+      lib/inets/src/http_client/httpc.erl,
+      lib/inets/src/http_client/httpc_handler.erl,
+      lib/inets/src/http_client/httpc_response.erl,
+      lib/inets/src/http_lib/http_response.erl, lib/snmp/src/misc/snmp_pdus.erl,
+      lib/stdlib/src/uri_string.erl.
+    - CVE-2026-55951
+
+ -- John Breton <john.breton@canonical.com>  Tue, 22 Sep 2026 12:31:02 -0400
+
 erlang (1:24.2.1+dfsg-1ubuntu0.6bb1) jammy; urgency=medium
 
   * Balabit patched version
