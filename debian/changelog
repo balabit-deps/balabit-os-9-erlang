@@ -1,3 +1,9 @@
+erlang (1:24.2.1+dfsg-1ubuntu0.8bb1) jammy; urgency=medium
+
+  * Balabit patched version
+
+ -- Balabit Platform Team <devnull@dev.null>  Thu, 22 Oct 2026 11:57:48 +0200
+
 erlang (1:24.2.1+dfsg-1ubuntu0.8) jammy-security; urgency=medium
 
   * debian/patches/CVE-2022-37026-1.patch: call
